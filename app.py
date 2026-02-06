@@ -114,7 +114,7 @@ def admin_logout():
 # --------------------------------
 def send_email(name, email, subject, message):
     EMAIL_ADDRESS = "vanishree0704@gmail.com"
-    EMAIL_PASSWORD = "rchrdizmjnzvqpbj"   # app password (no spaces)
+    EMAIL_PASSWORD = "znnmyaocgqnygqli"   # app password (no spaces)
 
     msg = EmailMessage()
     msg["From"] = EMAIL_ADDRESS
@@ -142,5 +142,6 @@ def send_email(name, email, subject, message):
 # -----------------------------
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 

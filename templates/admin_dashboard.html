@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Portfolio CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<section style="max-width:1200px; margin:90px auto; padding:20px;">
+
+  <div class="section-card" style="padding:30px;">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>📨 Contact Messages</h2>
+      <a href="/admin/logout" class="btn btn-outline">Logout</a>
+    </div>
+
+    <!-- TABLE -->
+    <div style="overflow-x:auto;">
+      <table class="table table-dark table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for msg in messages %}
+          <tr>
+            <td>{{ msg.name }}</td>
+            <td>{{ msg.email }}</td>
+            <td>{{ msg.subject }}</td>
+            <td style="max-width:320px;">{{ msg.message }}</td>
+            <td>{{ msg.created_at }}</td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="5" class="text-center py-4">
+              No messages yet
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>

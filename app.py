@@ -141,4 +141,6 @@ def send_email(name, email, subject, message):
 # START SERVER
 # -----------------------------
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
+
+

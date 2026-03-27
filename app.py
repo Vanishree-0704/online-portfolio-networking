@@ -3,6 +3,7 @@ from flask_cors import CORS
 from database import get_db_connection
 import smtplib
 from email.message import EmailMessage
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -43,7 +44,6 @@ def contact():
     conn.close()
 
     # ---- SEND EMAIL ----
-    print("send_email function called")
     send_email(name, email, subject, message)
 
     return jsonify({
@@ -110,13 +110,11 @@ def admin_logout():
 
 
 # --------------------------------
-# ✉️ EMAIL FUNCTION
+# ✉️ EMAIL FUNCTION (SECURE – RENDER READY)
 # --------------------------------
 def send_email(name, email, subject, message):
-  import os
-
-EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")   # app password (no spaces)
+    EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
+    EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
     msg = EmailMessage()
     msg["From"] = EMAIL_ADDRESS
@@ -144,6 +142,3 @@ EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")   # app password (no spaces)
 # -----------------------------
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
-
-
-

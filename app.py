@@ -113,8 +113,10 @@ def admin_logout():
 # ✉️ EMAIL FUNCTION
 # --------------------------------
 def send_email(name, email, subject, message):
-    EMAIL_ADDRESS = "vanishree0704@gmail.com"
-    EMAIL_PASSWORD = "znnmyaocgqnygqli"   # app password (no spaces)
+  import os
+
+EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")   # app password (no spaces)
 
     msg = EmailMessage()
     msg["From"] = EMAIL_ADDRESS
